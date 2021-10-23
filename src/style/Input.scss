@@ -1,0 +1,22 @@
+@use './Common';
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.name {
+    min-width: 7.5rem;
+}
+
+.input {
+    @include Common.input;
+
+    width: 100%;
+    flex: 1;
+    margin-left: auto;
+}

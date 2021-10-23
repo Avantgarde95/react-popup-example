@@ -1,0 +1,31 @@
+$white: #ffffff;
+$black: #2e2e2e;
+
+@mixin button {
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 1rem;
+
+    border: 1px solid $black;
+    border-radius: 0;
+
+    color: $black;
+    background-color: transparent;
+
+    &:hover {
+        color: $white;
+        background-color: $black;
+    }
+}
+
+@mixin input {
+    font-family: inherit;
+    font-size: 1rem;
+
+    color: $black;
+    background-color: transparent;
+
+    border: 1px solid $black;
+    border-radius: 0;
+}
