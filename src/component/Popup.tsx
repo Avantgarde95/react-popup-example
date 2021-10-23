@@ -8,13 +8,15 @@ interface Props {
     windowWidth: number;
     windowHeight: number;
     children: ReactNode;
+    onClose: () => void;
 }
 
-export const Popup = ({ windowWidth, windowHeight, children }: Props) => {
+export const Popup = ({ windowWidth, windowHeight, children, onClose }: Props) => {
     const popupWindow = window.open('', '_blank', `width=${windowWidth},height=${windowHeight}`);
 
     if (!popupWindow) {
         alert('Failed to open the popup!');
+        onClose();
         return <></>;
     }
 
@@ -29,6 +31,8 @@ export const Popup = ({ windowWidth, windowHeight, children }: Props) => {
     const popupRoot = document.createElement('div');
     popupRoot.className = 'Popup';
     popupWindow.document.body.appendChild(popupRoot);
+
+    popupWindow.addEventListener('beforeunload', onClose);
 
     return createPortal(children, popupRoot);
 };

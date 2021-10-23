@@ -18,25 +18,32 @@ export const App = () => {
                     <div className={styles.center}>
                         <Viewer />
                     </div>
-                    <div className={styles.right}>
-                        <Toolpane />
-                        <button
-                            className={styles.popupButton}
-                            type={'button'}
-                            onClick={() => {
-                                setPopupOpen(true);
+                    {isPopupOpen ? (
+                        <Popup
+                            windowWidth={400}
+                            windowHeight={600}
+                            onClose={() => {
+                                setPopupOpen(false);
                             }}
                         >
-                            Open in the new window
-                        </button>
-                    </div>
+                            <Toolpane />
+                        </Popup>
+                    ) : (
+                        <div className={styles.right}>
+                            <Toolpane />
+                            <button
+                                className={styles.popupButton}
+                                type={'button'}
+                                onClick={() => {
+                                    setPopupOpen(true);
+                                }}
+                            >
+                                Open in the new window
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
-            {isPopupOpen && (
-                <Popup windowWidth={400} windowHeight={600}>
-                    <Toolpane />
-                </Popup>
-            )}
         </Provider>
     );
 };
