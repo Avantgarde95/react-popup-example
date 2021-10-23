@@ -21,7 +21,8 @@ function drawImage(canvas: HTMLCanvasElement, image: HTMLImageElement, imageStat
     const context = canvas.getContext('2d');
 
     if (!context) {
-        throw new Error('Failed to get 2D context from the canvas!');
+        alert('Failed to get 2D context from the canvas!');
+        return;
     }
 
     context.clearRect(0, 0, canvas.width, canvas.height);

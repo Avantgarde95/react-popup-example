@@ -1,26 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 
+import { store } from 'store/Store';
 import { Viewer } from 'component/Viewer';
 import { Toolpane } from 'component/Toolpane';
-import { store } from 'store/Store';
+import { Popup } from 'component/Popup';
 import styles from 'style/App.scss';
 
-export const App = () => (
-    <Provider store={store}>
-        <div className={styles.app}>
-            <div className={styles.header}>Image editor</div>
-            <div className={styles.content}>
-                <div className={styles.center}>
-                    <Viewer />
-                </div>
-                <div className={styles.right}>
-                    <Toolpane />
-                    <button type={'button'} className={styles.popupButton}>
-                        Open in the new window
-                    </button>
+export const App = () => {
+    const [isPopupOpen, setPopupOpen] = useState(false);
+
+    return (
+        <Provider store={store}>
+            <div className={styles.app}>
+                <div className={styles.header}>Image editor</div>
+                <div className={styles.content}>
+                    <div className={styles.center}>
+                        <Viewer />
+                    </div>
+                    <div className={styles.right}>
+                        <Toolpane />
+                        <button
+                            className={styles.popupButton}
+                            type={'button'}
+                            onClick={() => {
+                                setPopupOpen(true);
+                            }}
+                        >
+                            Open in the new window
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </Provider>
-);
+            {isPopupOpen && (
+                <Popup windowWidth={400} windowHeight={600}>
+                    <Toolpane />
+                </Popup>
+            )}
+        </Provider>
+    );
+};
