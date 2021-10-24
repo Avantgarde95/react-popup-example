@@ -50,6 +50,9 @@ function drawImage(canvas: HTMLCanvasElement, image: HTMLImageElement, imageStat
     context.clearRect(0, canvas.height - imageState.crop, canvas.width, imageState.crop);
 }
 
+/**
+ * Render the image on the canvas and apply the operators.
+ */
 export const Viewer = () => {
     const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
     const imageState = useStrictSelector(state => state.image);

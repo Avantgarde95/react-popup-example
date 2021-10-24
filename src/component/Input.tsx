@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from 'style/Input.scss';
 
 /**
- *
+ * Input props.
  */
 interface Props {
     about: string;
@@ -12,6 +12,9 @@ interface Props {
     onSubmit: (value: string) => void;
 }
 
+/**
+ * Simple text/number input for the toolpane.
+ */
 export const Input = ({ about, type, initialValue, onSubmit }: Props) => {
     const [value, setValue] = useState(initialValue);
 

@@ -11,6 +11,11 @@ interface Props {
     onClose: () => void;
 }
 
+/**
+ * Open a new window and puts the children on that window.
+ * The new window and the original window shares the redux store.
+ * (That is, if you do something in the new window, it will be applied to the original window, too.)
+ */
 export const Popup = ({ windowWidth, windowHeight, children, onClose }: Props) => {
     const popupWindow = window.open('', '_blank', `width=${windowWidth},height=${windowHeight}`);
 

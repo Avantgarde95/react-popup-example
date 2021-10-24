@@ -7,6 +7,9 @@ import { Toolpane } from 'component/Toolpane';
 import { Popup } from 'component/Popup';
 import styles from 'style/App.scss';
 
+/**
+ * The whole application.
+ */
 export const App = () => {
     const [isPopupOpen, setPopupOpen] = useState(false);
 

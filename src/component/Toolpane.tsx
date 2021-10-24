@@ -5,6 +5,9 @@ import { useStrictDispatch, useStrictSelector } from 'store/Store';
 import { imageSlice } from 'store/Image';
 import styles from 'style/Toolpane.scss';
 
+/**
+ * Collection of the inputs which modifies the store.
+ */
 export const Toolpane = () => {
     const imageState = useStrictSelector(state => state.image);
     const dispatch = useStrictDispatch();
